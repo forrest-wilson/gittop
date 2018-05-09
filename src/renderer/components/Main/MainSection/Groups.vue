@@ -1,0 +1,72 @@
+<template>
+  <section id="repositoriesSection" class="nav-section section">
+    <!-- Add Group Modal Window -->
+    <div id="addGroupModal" class="add-group-modal">
+      <div class="field">
+        <div class="control">
+          <input id="groupNameInput" class="input" type="text" placeholder="Group name">
+        </div>
+        <p id="newGroupError" class="help is-danger"></p>
+      </div>
+      <div class="field">
+        <div class="control">
+          <button id="addGroup" class="button is-success">Create Group</button>
+          <button id="cancelAddGroup" class="button is-danger">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Repo to Group Modal Window -->
+    <div id="addRepoToGroupModal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+        <div class="modal-card">
+          <div class="modal-card-head" style="background-color: rgb(37, 37, 37); border-bottom: 1px solid #1e1e1e;">
+              <p class="modal-card-title" style="color: white;">Please choose a group:</p>
+          </div>
+          <div id="addRepoToGroupBody" class="modal-card-body" style="background-color: rgb(57, 57, 57);"></div>
+          <div class="modal-card-foot" style="background-color: rgb(37, 37, 37); border-top: 1px solid #1e1e1e;">
+            <button id="addRepoToGroup" class="button is-success">Add to Group</button>
+            <button id="cancelAddRepoToGroup" class="button is-danger">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="app-column static nav-bg">
+      <section class="repo-section">
+        <!-- Section Label -->
+        <div class="section-label">
+          <label>Groups</label>
+        </div>
+
+        <div id="groups" class="groups">
+          <div class="group selected" data-request="groupAll">
+            <span class="group-title">All Repos</span>
+            <span class="icon is-small">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </div>
+        </div>
+
+        <div id="addButton" class="app-nav-item no-shrink bottom">
+          <span class="nav-title" style="text-align: center;">+</span>
+        </div>
+        </section>
+    </nav>
+
+    <div class="app-repo-groups" style="position: relative; width: 100%;">
+      <div id="groupAll" class="fit section group-content is-showing">
+        <div class="inner">
+          <header class="content">
+            <h1><i class="fa fa-code"></i> All Repositories</h1>
+            <p>Below are your repositories</p>
+          </header>
+          <hr>
+          <main id="reposWrapper"></main>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

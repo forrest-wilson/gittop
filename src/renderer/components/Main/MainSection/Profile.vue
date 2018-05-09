@@ -1,0 +1,11 @@
+<template>
+  <section id="profileSection" class="nav-section section is-showing">
+    <div class="inner">
+        <header class="content">
+          <h1><i class="fa fa-user"></i> Account</h1>
+          <p>Here's your account information</p>
+        </header>
+        <hr>
+    </div>
+  </section>
+</template>

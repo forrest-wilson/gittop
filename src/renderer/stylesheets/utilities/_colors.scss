@@ -1,0 +1,8 @@
+//**** Colors ****//
+
+.nav-bg {
+    background: $darkColor;
+    & > * {
+        color: white;
+    }
+}

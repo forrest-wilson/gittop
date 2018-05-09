@@ -1,0 +1,25 @@
+.repo {
+    position: relative;
+    padding: 15px;
+    display: flex;
+    -webkit-user-drag: element;
+    user-select: none;
+}
+
+.details {
+    flex-grow: 1;
+    align-self: center;
+}
+
+.clone-button {
+    align-self: center;
+    flex-shrink: 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+}

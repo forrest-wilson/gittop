@@ -1,0 +1,132 @@
+//**** Navigation Styling ****//
+
+.section-navigator {
+    width: 80px;
+    background: $darkColor;
+    z-index: 10;
+    border-right: $border;
+
+    .navigator-icon {
+        width: 60px;
+        height: 60px;
+        padding: 5px;
+        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: rgb(88, 89, 92);
+        transition: 300ms;
+        border-radius: 10px;
+        -webkit-app-region: no-drag;
+
+        .profile-image {
+            border-radius: 50%;
+        }
+
+        &:hover,
+        &.active-nav-item {
+            color: rgb(120, 120, 120);
+            background-color: rgb(60, 60, 60);
+            cursor: pointer;
+        }
+    }
+}
+
+.app-nav-item {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+
+    .nav-title {
+        flex: 1;
+        align-self: center;
+        word-break: break-word;
+    }
+
+    &.no-shrink {
+        flex-shrink: 0;
+    }
+
+    &.bottom {
+        justify-self: flex-end;
+        border-top: $border;
+        padding: 10px;
+    }
+
+    &.selected,
+    &:hover {
+        background-color: $selectedDarkColor;
+        cursor: pointer;
+    }
+
+    &:first-child {
+        border-bottom: $border;
+    }
+}
+
+.repo-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .section-label {
+        padding: 5px 20px;
+        background-color: rgb(47, 47, 47);
+        font-size: 14px;
+        margin: 2px 0;
+        font-weight: bold;
+    }
+}
+
+.add-group-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0 0 10px rgba(15, 15, 15, 0.75);
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 0 0 5px 5px;
+    display: none;
+}
+
+.groups {
+    overflow-y: auto;
+    flex-grow: 1;
+
+    .group {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        user-select: none;
+
+        .group-title {
+            flex: 1;
+            align-self: center;
+            word-break: break-word;
+        }
+
+        &.selected,
+        &:hover {
+            background-color: $selectedDarkColor;
+            cursor: pointer;
+        }
+    }
+}
+
+.group-option {
+    color: white;
+    padding: 10px;
+    border-radius: 2.5px;
+    margin-bottom: 5px;
+
+    &:hover,
+    &.selected-group-option {
+        background-color: rgb(120, 120, 120);
+        cursor: pointer;
+    }
+}
