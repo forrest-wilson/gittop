@@ -27,7 +27,11 @@ export default {
     },
     setActive (menuItem) {
       this.activeNavItem = menuItem
+
+      // Emits an event with the activeNavItem string
       EventBus.$emit('main-section-change', this.activeNavItem)
+
+      // Sets the 'active-nav-item' property in electron-settings for persistance
       settings.set('active-nav-item', this.activeNavItem)
     }
   }
