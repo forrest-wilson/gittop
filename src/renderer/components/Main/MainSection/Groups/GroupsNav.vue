@@ -6,7 +6,7 @@
         <label>Groups</label>
       </div>
 
-      <div id="groups" class="groups">
+      <div class="groups">
         <div class="group selected" data-request="groupAll">
           <span class="group-title">All Repos</span>
           <span class="icon is-small">
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div id="addButton" class="app-nav-item no-shrink bottom">
+      <div class="app-nav-item no-shrink bottom" @click="showAddGroupModalModal">
         <span class="nav-title" style="text-align: center;">+</span>
       </div>
     </section>
@@ -24,6 +24,11 @@
 
 <script>
 export default {
-  name: 'GroupsNav'
+  name: 'GroupsNav',
+  methods: {
+    showAddGroupModalModal () {
+      this.$parent.$emit('isAddGroupModalActive', true)
+    }
+  }
 }
 </script>

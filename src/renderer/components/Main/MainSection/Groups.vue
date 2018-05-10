@@ -1,20 +1,7 @@
 <template>
-  <section id="repositoriesSection" class="nav-section section" :class="{ 'is-showing': isActive('repos') }">
+  <section class="nav-section section" :class="{ 'is-showing': isActive('repos') }">
     <!-- Add Group Modal Window -->
-    <div id="addGroupModal" class="add-group-modal">
-      <div class="field">
-        <div class="control">
-          <input id="groupNameInput" class="input" type="text" placeholder="Group name">
-        </div>
-        <p id="newGroupError" class="help is-danger"></p>
-      </div>
-      <div class="field">
-        <div class="control">
-          <button id="addGroup" class="button is-success">Create Group</button>
-          <button id="cancelAddGroup" class="button is-danger">Cancel</button>
-        </div>
-      </div>
-    </div>
+    <app-add-group-modal :isActive="isAddGroupModalActive"></app-add-group-modal>
 
     <!-- Add Repo to Group Modal Window -->
     <div id="addRepoToGroupModal" class="modal">
@@ -37,7 +24,7 @@
     <app-groups-nav></app-groups-nav>
 
     <div class="app-repo-groups" style="position: relative; width: 100%;">
-      <div id="groupAll" class="fit section group-content is-showing">
+      <div class="fit section group-content is-showing">
         <div class="inner">
           <header class="content">
             <h1><i class="fa fa-code"></i> All Repositories</h1>
@@ -53,12 +40,24 @@
 
 <script>
 import GroupsNav from './Groups/GroupsNav.vue'
+import AddGroupModal from './Modals/AddGroupModal.vue'
 
 export default {
   name: 'Groups',
   props: ['activeNavItem'],
   components: {
-    'app-groups-nav': GroupsNav
+    'app-groups-nav': GroupsNav,
+    'app-add-group-modal': AddGroupModal
+  },
+  created () {
+    this.$on('isAddGroupModalActive', state => {
+      this.isAddGroupModalActive = state
+    })
+  },
+  data () {
+    return {
+      isAddGroupModalActive: false
+    }
   },
   methods: {
     isActive (item) {
