@@ -1,5 +1,5 @@
 <template>
-  <section id="profileSection" class="nav-section section" :class="{ 'is-showing': isActive('profile') }">
+  <section class="nav-section section" :class="{ 'is-showing': isActive('profile') }">
     <div class="inner">
         <header class="content">
           <h1><i class="fa fa-user"></i> Account</h1>
