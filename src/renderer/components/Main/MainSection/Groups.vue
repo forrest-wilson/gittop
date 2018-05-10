@@ -1,5 +1,5 @@
 <template>
-  <section id="repositoriesSection" class="nav-section section">
+  <section id="repositoriesSection" class="nav-section section" :class="{ 'is-showing': isActive('repos') }">
     <!-- Add Group Modal Window -->
     <div id="addGroupModal" class="add-group-modal">
       <div class="field">
@@ -70,3 +70,15 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  name: 'Groups',
+  props: ['activeNavItem'],
+  methods: {
+    isActive (item) {
+      return this.activeNavItem === item
+    }
+  }
+}
+</script>
