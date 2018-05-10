@@ -34,27 +34,7 @@
       </div>
     </div>
 
-    <nav class="app-column static nav-bg">
-      <section class="repo-section">
-        <!-- Section Label -->
-        <div class="section-label">
-          <label>Groups</label>
-        </div>
-
-        <div id="groups" class="groups">
-          <div class="group selected" data-request="groupAll">
-            <span class="group-title">All Repos</span>
-            <span class="icon is-small">
-              <i class="fa fa-angle-right"></i>
-            </span>
-          </div>
-        </div>
-
-        <div id="addButton" class="app-nav-item no-shrink bottom">
-          <span class="nav-title" style="text-align: center;">+</span>
-        </div>
-        </section>
-    </nav>
+    <app-groups-nav></app-groups-nav>
 
     <div class="app-repo-groups" style="position: relative; width: 100%;">
       <div id="groupAll" class="fit section group-content is-showing">
@@ -72,9 +52,14 @@
 </template>
 
 <script>
+import GroupsNav from './Groups/GroupsNav.vue'
+
 export default {
   name: 'Groups',
   props: ['activeNavItem'],
+  components: {
+    'app-groups-nav': GroupsNav
+  },
   methods: {
     isActive (item) {
       return this.activeNavItem === item
