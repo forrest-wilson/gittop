@@ -1,0 +1,30 @@
+.modal-card > * {
+    color: white;
+}
+
+.modal-card-head,
+.modal-card-foot {
+    background-color: $darkColor;
+}
+
+.modal-card-head {
+    border-bottom: $border;
+}
+
+.modal-card-foot {
+    border-top: $border;
+}
+
+.modal-card-body {
+    background-color: $selectedDarkColor;
+
+    .field {
+        .label {
+            color: white;
+        }
+    }
+}
+
+.modal-card-title {
+    color: white;
+}
