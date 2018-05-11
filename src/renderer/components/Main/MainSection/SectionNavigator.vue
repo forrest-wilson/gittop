@@ -6,12 +6,13 @@
     <div class="navigator-icon" @click="setActive('repos')" :class="{ 'active-nav-item': isActive('repos') }">
       <i class="fa fa-code"></i>
     </div>
+    <div class="navigator-icon bottom" @click="showSettingsModal">
+      <i class="fa fa-gear"></i>
+    </div>
   </nav>
 </template>
 
 <script>
-import { EventBus } from '../../event-bus'
-
 const settings = require('electron-settings')
 
 export default {
@@ -29,11 +30,27 @@ export default {
       this.activeNavItem = menuItem
 
       // Emits an event with the activeNavItem string
-      EventBus.$emit('main-section-change', this.activeNavItem)
+      this.$parent.$emit('main-section-change', this.activeNavItem)
 
       // Sets the 'active-nav-item' property in electron-settings for persistance
       settings.set('active-nav-item', this.activeNavItem)
+    },
+    showSettingsModal () {
+      // Sends an event to MainSection.vue
+      this.$parent.$emit('settings-modal-change', true)
     }
   }
 }
 </script>
+
+<style scoped>
+  .app-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navigator-icon.bottom {
+    align-self: flex-end;
+    margin-top: auto;
+  }
+</style>
