@@ -25,13 +25,20 @@
 
     <div class="app-repo-groups" style="position: relative; width: 100%;">
       <div class="fit section group-content is-showing">
-        <div class="inner">
+        <div class="inner" v-if="groups">
           <header class="content">
             <h1><i class="fa fa-code"></i> All Repositories</h1>
             <p>Below are your repositories</p>
           </header>
           <hr>
           <main id="reposWrapper"></main>
+        </div>
+
+        <div class="inner no-content" v-else>
+          <div class="content">
+            <h1 class="has-text-centered">Hey there!</h1>
+            <p class="has-text-centered">If you want to manage your GitHub repos, <a @click="showHowToGetTokenModal">get a personal access token</a> on GitHub and paste it into <a @click="showSettings">Settings</a>.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -41,6 +48,8 @@
 <script>
 import GroupsNav from './Groups/GroupsNav.vue'
 import AddGroupModal from './Modals/AddGroupModal.vue'
+
+const settings = require('electron-settings')
 
 export default {
   name: 'Groups',
@@ -56,13 +65,30 @@ export default {
   },
   data () {
     return {
-      isAddGroupModalActive: false
+      isAddGroupModalActive: false,
+      groups: settings.get('groups')
     }
   },
   methods: {
     isActive (item) {
       return this.activeNavItem === item
+    },
+    showSettings () {
+      this.$parent.$emit('settings-modal-change', true)
+    },
+    showHowToGetTokenModal () {
+      this.$parent.$emit('token-modal-change', true)
     }
   }
 }
 </script>
+
+<style lang="sass" scoped>
+  .no-content
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .content
+      max-width: 400px
+</style>
