@@ -7,12 +7,9 @@
       </div>
 
       <div class="groups">
-        <div class="group selected" data-request="groupAll">
-          <span class="group-title">All Repos</span>
-          <span class="icon is-small">
-            <i class="fa fa-angle-right"></i>
-          </span>
-        </div>
+        <app-group>
+          <span class="group-title" slot="groupName">All Repos</span>
+        </app-group>
       </div>
 
       <div class="app-nav-item no-shrink bottom" @click="showAddGroupModalModal">
@@ -23,8 +20,13 @@
 </template>
 
 <script>
+import Group from './Group/Group.vue'
+
 export default {
   name: 'GroupsNav',
+  components: {
+    'app-group': Group
+  },
   methods: {
     showAddGroupModalModal () {
       this.$parent.$emit('isAddGroupModalActive', true)
