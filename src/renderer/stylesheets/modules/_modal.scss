@@ -19,6 +19,7 @@
     background-color: $selectedDarkColor;
 
     .field {
+        & > *,
         .label {
             color: white;
         }
