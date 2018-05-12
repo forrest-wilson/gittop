@@ -23,8 +23,8 @@ function createWindow () {
    */
 
   let windowSettings = {
-    minWidth: 750,
-    minHeight: 500,
+    minWidth: 1000,
+    minHeight: 600,
     width: 1000,
     height: 700,
     titleBarStyle: 'hiddenInset',
