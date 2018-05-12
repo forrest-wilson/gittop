@@ -50,6 +50,8 @@ import GroupsNav from './Groups/GroupsNav.vue'
 import AddGroupModal from './Modals/AddGroupModal.vue'
 
 const settings = require('electron-settings')
+// const store = require('electron-store')
+const octokit = require('@octokit/rest')()
 
 export default {
   name: 'Groups',
@@ -59,9 +61,25 @@ export default {
     'app-add-group-modal': AddGroupModal
   },
   created () {
+    // Event listeners
     this.$on('isAddGroupModalActive', state => {
       this.isAddGroupModalActive = state
     })
+  },
+  mounted () {
+    let token = settings.get('personalAccessToken')
+
+    // Access token logic
+    if (token) {
+      octokit.authenticate({
+        type: 'token',
+        token: token
+      })
+
+      octokit.repos.getAll({visibility: 'all', per_page: 100, page: 1}).then(repos => {
+        console.log(repos)
+      })
+    }
   },
   data () {
     return {
