@@ -25,13 +25,19 @@
 
     <div class="app-repo-groups" style="position: relative; width: 100%;">
       <div class="fit section group-content is-showing">
-        <div class="inner" v-if="groups">
+        <div class="inner" v-if="repos.length > 0">
           <header class="content">
             <h1><i class="fa fa-code"></i> All Repositories</h1>
             <p>Below are your repositories</p>
           </header>
           <hr>
-          <main id="reposWrapper"></main>
+          <main id="reposWrapper">
+            <app-repo v-for="repo in repos" :key="repo.id">
+              <template slot="name">{{ repo.name }}</template>
+              <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
+              <template slot="language">{{ repo.language }}</template>
+            </app-repo>
+          </main>
         </div>
 
         <div class="inner no-content" v-else>
@@ -48,9 +54,11 @@
 <script>
 import GroupsNav from './Groups/GroupsNav.vue'
 import AddGroupModal from './Modals/AddGroupModal.vue'
+import Repo from './Groups/Repo.vue'
 
 const settings = require('electron-settings')
-// const store = require('electron-store')
+const Store = require('electron-store')
+const eStore = new Store()
 const octokit = require('@octokit/rest')()
 
 export default {
@@ -58,7 +66,8 @@ export default {
   props: ['activeNavItem'],
   components: {
     'app-groups-nav': GroupsNav,
-    'app-add-group-modal': AddGroupModal
+    'app-add-group-modal': AddGroupModal,
+    'app-repo': Repo
   },
   created () {
     // Event listeners
@@ -77,14 +86,24 @@ export default {
       })
 
       this.paginate(octokit.repos.getAll, {per_page: 100}).then(data => {
+        let storedRepos = eStore.get('repos')
         console.log(data)
+
+        if (!storedRepos) {
+          eStore.set('repos', data)
+        } else {
+          eStore.get('repos')
+        }
+
+        this.repos = eStore.get('repos')
       })
     }
   },
   data () {
     return {
       isAddGroupModalActive: false,
-      groups: settings.get('groups')
+      groups: settings.get('groups'),
+      repos: eStore.get('repos') || []
     }
   },
   methods: {
@@ -107,6 +126,11 @@ export default {
       }
 
       return data
+    }
+  },
+  watch: {
+    repos () {
+      console.log('new repos have come in!')
     }
   }
 }
