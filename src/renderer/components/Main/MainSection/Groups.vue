@@ -76,8 +76,8 @@ export default {
         token: token
       })
 
-      octokit.repos.getAll({visibility: 'all', per_page: 100, page: 1}).then(repos => {
-        console.log(repos)
+      this.paginate(octokit.repos.getAll, {per_page: 100}).then(data => {
+        console.log(data)
       })
     }
   },
@@ -96,6 +96,17 @@ export default {
     },
     showHowToGetTokenModal () {
       this.$parent.$emit('token-modal-change', true)
+    },
+    async paginate (method, options) {
+      let res = await method(options)
+      let { data } = res
+
+      while (octokit.hasNextPage(res)) {
+        res = await octokit.getNextPage(res)
+        data = data.concat(res.data)
+      }
+
+      return data
     }
   }
 }
