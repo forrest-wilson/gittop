@@ -45,7 +45,7 @@ export default {
 
   .repo-attr {
     font-weight: normal;
-    font-size: 15px;
+    font-size: 10px;
     margin-left: 5px;
     padding: 5px;
     border: 1px solid lightgray;
