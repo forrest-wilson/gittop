@@ -1,7 +1,7 @@
 <template>
   <nav class="app-column section-navigator window-drag">
     <div class="navigator-icon" @click="setActive('profile')" :class="{ 'active-nav-item': isActive('profile') }">
-      <img class="profile-image" src="/static/images/avatar.png" alt="Avatar">
+      <img class="profile-image" :src="avatarUrl" alt="Avatar">
     </div>
     <div class="navigator-icon" @click="setActive('repos')" :class="{ 'active-nav-item': isActive('repos') }">
       <i class="fa fa-code"></i>
@@ -19,7 +19,8 @@ export default {
   name: 'SectionNavigator',
   data () {
     return {
-      activeNavItem: settings.get('active-nav-item') || 'profile'
+      activeNavItem: settings.get('active-nav-item') || 'profile',
+      avatarUrl: 'static/images/avatar.png'
     }
   },
   methods: {
