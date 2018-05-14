@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+import '../../node_modules/bulma/css/bulma.min.css'
+import '../../node_modules/font-awesome/css/font-awesome.min.css'
+
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
