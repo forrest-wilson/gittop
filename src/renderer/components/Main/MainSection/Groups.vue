@@ -1,13 +1,9 @@
 <template>
   <section class="nav-section section" :class="{ 'is-showing': isActive('repos') }">
-    <!-- Add Group Modal Window -->
-    <app-add-group-modal :isActive="isAddGroupModalActive"></app-add-group-modal>
-
     <!-- Add Repo to Group Modal Window -->
     <div id="addRepoToGroupModal" class="modal">
       <div class="modal-background"></div>
       <div class="modal-content">
-        <!-- Any other Bulma elements you want -->
         <div class="modal-card">
           <div class="modal-card-head" style="background-color: rgb(37, 37, 37); border-bottom: 1px solid #1e1e1e;">
               <p class="modal-card-title" style="color: white;">Please choose a group:</p>
@@ -53,7 +49,6 @@
 
 <script>
 import GroupsNav from './Groups/GroupsNav.vue'
-import AddGroupModal from './Modals/AddGroupModal.vue'
 import Repo from './Groups/Repo.vue'
 
 const settings = require('electron-settings')
@@ -66,14 +61,7 @@ export default {
   props: ['activeNavItem'],
   components: {
     'app-groups-nav': GroupsNav,
-    'app-add-group-modal': AddGroupModal,
     'app-repo': Repo
-  },
-  created () {
-    // Event listeners
-    this.$on('isAddGroupModalActive', state => {
-      this.isAddGroupModalActive = state
-    })
   },
   mounted () {
     let token = settings.get('personalAccessToken')
@@ -101,7 +89,6 @@ export default {
   },
   data () {
     return {
-      isAddGroupModalActive: false,
       groups: settings.get('groups'),
       repos: eStore.get('repos') || []
     }

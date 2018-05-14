@@ -28,7 +28,7 @@
 const settings = require('electron-settings')
 
 export default {
-  name: 'Settings',
+  name: 'SettingsModal',
   props: ['isActive'],
   data () {
     return {

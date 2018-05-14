@@ -1,6 +1,6 @@
 <template>
   <!-- Add Group Modal Window -->
-  <div class="add-group-modal" v-if="isActive">
+  <div class="add-group-modal is-active">
     <div class="field">
       <div class="control">
         <input class="input" type="text" placeholder="Group name" v-model="groupName">
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { EventBus } from '../../event-bus'
+
 export default {
   name: 'AddGroupModal',
   props: ['isActive'],
@@ -25,9 +27,12 @@ export default {
       groupName: ''
     }
   },
+  created () {
+    this.$on('')
+  },
   methods: {
     hideAddGroupModal () {
-      this.$parent.$emit('isAddGroupModalActive', false)
+      EventBus.$emit('add-group-modal-change', false)
       this.groupName = ''
     }
   }

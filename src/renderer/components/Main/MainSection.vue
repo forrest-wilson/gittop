@@ -6,6 +6,7 @@
         <app-groups :activeNavItem="activeNavItem"></app-groups>
         <app-settings v-if="isSettingsModalActive"></app-settings>
         <app-token-modal v-if="isTokenModalActive"></app-token-modal>
+        <app-add-group-modal v-if="isAddGroupModalActive"></app-add-group-modal>
       </main>
   </div>
 </template>
@@ -14,8 +15,11 @@
 import SectionNavigator from './MainSection/SectionNavigator.vue'
 import Profile from './MainSection/Profile.vue'
 import Groups from './MainSection/Groups.vue'
-import Settings from './MainSection/Settings.vue'
-import HowToGetTokenModal from './MainSection/HowToGetTokenModal.vue'
+import SettingsModal from './Modals/SettingsModal.vue'
+import HowToGetTokenModal from './Modals/HowToGetTokenModal.vue'
+import AddGroupModal from './Modals/AddGroupModal.vue'
+
+import { EventBus } from '../event-bus'
 
 const settings = require('electron-settings')
 
@@ -25,15 +29,17 @@ export default {
     return {
       activeNavItem: settings.get('active-nav-item') || 'profile',
       isSettingsModalActive: false,
-      isTokenModalActive: false
+      isTokenModalActive: false,
+      isAddGroupModalActive: false
     }
   },
   components: {
     'app-section-navigator': SectionNavigator,
     'app-profile': Profile,
     'app-groups': Groups,
-    'app-settings': Settings,
-    'app-token-modal': HowToGetTokenModal
+    'app-settings': SettingsModal,
+    'app-token-modal': HowToGetTokenModal,
+    'app-add-group-modal': AddGroupModal
   },
   created () {
     this.$on('main-section-change', item => {
@@ -46,6 +52,11 @@ export default {
 
     this.$on('token-modal-change', state => {
       this.isTokenModalActive = state
+    })
+
+    EventBus.$on('add-group-modal-change', state => {
+      console.log(state)
+      this.isAddGroupModalActive = state
     })
   }
 }

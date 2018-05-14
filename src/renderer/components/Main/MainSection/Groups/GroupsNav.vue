@@ -13,7 +13,7 @@
       </div>
 
       <div class="app-nav-item no-shrink bottom" @click="showAddGroupModalModal">
-        <span class="nav-title" style="text-align: center;">+</span>
+        <span class="nav-title has-text-centered">+</span>
       </div>
     </section>
   </nav>
@@ -22,6 +22,8 @@
 <script>
 import Group from './Group/Group.vue'
 
+import { EventBus } from '../../../event-bus'
+
 export default {
   name: 'GroupsNav',
   components: {
@@ -29,7 +31,7 @@ export default {
   },
   methods: {
     showAddGroupModalModal () {
-      this.$parent.$emit('isAddGroupModalActive', true)
+      EventBus.$emit('add-group-modal-change', true)
     }
   }
 }
