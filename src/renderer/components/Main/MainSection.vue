@@ -55,7 +55,6 @@ export default {
     })
 
     EventBus.$on('add-group-modal-change', state => {
-      console.log(state)
       this.isAddGroupModalActive = state
     })
   }
