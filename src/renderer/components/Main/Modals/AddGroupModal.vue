@@ -16,7 +16,7 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" @click="createNewGroup">Add</button>
+          <button class="button is-success">Add</button>
           <button class="button" @click="hideAddGroupModal">Cancel</button>
         </footer>
       </div>
@@ -41,9 +41,6 @@ export default {
   methods: {
     hideAddGroupModal () {
       EventBus.$emit('add-group-modal-change', false)
-    },
-    createNewGroup () {
-
     }
   }
 }
