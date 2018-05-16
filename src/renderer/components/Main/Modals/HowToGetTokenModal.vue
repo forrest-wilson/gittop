@@ -1,6 +1,6 @@
 <template>
   <transition name="access-token-modal">
-    <div class="modal is-active" transition="modal">
+    <div class="modal is-active">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -47,18 +47,6 @@ export default {
 </script>
 
 <style scoped>
-  .white {
-    color: white;
-  }
-
-  .modal {
-    transition: opacity 200ms ease;
-  }
-
-  .modal-card {
-    transition: all 200ms ease;
-  }
-
   .access-token-modal-enter {
     opacity: 0;
   }

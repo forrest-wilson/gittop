@@ -1,5 +1,13 @@
-.modal-card > * {
-    color: white;
+.modal {
+    transition: opacity 200ms ease;
+}
+
+.modal-card {
+    transition: all 200ms ease;
+
+    & > * {
+        color: white;
+    }
 }
 
 .modal-card-head,
