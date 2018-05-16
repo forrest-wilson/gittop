@@ -6,7 +6,7 @@
         <p>Below are your repositories</p>
       </header>
       <hr>
-      <main id="reposWrapper">
+      <main>
         <app-repo v-for="repo in repos" :key="repo.id">
           <template slot="name">{{ repo.name }}</template>
           <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
@@ -94,13 +94,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-  .no-content
-    display: flex
-    align-items: center
-    justify-content: center
-
-    .content
-      max-width: 400px
-</style>

@@ -17,9 +17,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .wrapper {
-    height: 100%;
-  }
-</style>

@@ -36,23 +36,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  .repo-name {
-    display: flex;
-    align-items: center;
-  }
-
-  .repo-attr {
-    font-weight: normal;
-    font-size: 10px;
-    margin-left: 5px;
-    padding: 5px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-  }
-
-  .actions {
-    display: flex;
-  }
-</style>

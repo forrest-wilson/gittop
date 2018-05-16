@@ -45,15 +45,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  .app-column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .navigator-icon.bottom {
-    align-self: flex-end;
-    margin-top: auto;
-  }
-</style>

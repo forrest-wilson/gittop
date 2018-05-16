@@ -7,10 +7,3 @@ export default {
   name: 'Toolbar'
 }
 </script>
-
-<style lang="sass">
-  .app-toolbar
-    height: 40px
-    background-color: $darkColor
-    border-bottom: $border
-</style>

@@ -12,6 +12,13 @@
         height: 100%;
         position: relative;
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+
+        .navigator-icon.bottom {
+            align-self: flex-end;
+            margin-top: auto;
+        }
     }
 
     .static {

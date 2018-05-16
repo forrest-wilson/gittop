@@ -10,6 +10,6 @@
   }
 </script>
 
-<style>
-  /* CSS */
+<style lang="scss">
+  // Needed for stylesheet compilation
 </style>
