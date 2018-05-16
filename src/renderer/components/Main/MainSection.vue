@@ -46,11 +46,11 @@ export default {
       this.activeNavItem = item
     })
 
-    this.$on('settings-modal-change', state => {
+    EventBus.$on('settings-modal-change', state => {
       this.isSettingsModalActive = state
     })
 
-    this.$on('token-modal-change', state => {
+    EventBus.$on('token-modal-change', state => {
       this.isTokenModalActive = state
     })
 

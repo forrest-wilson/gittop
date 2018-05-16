@@ -1,7 +1,7 @@
 <template>
   <transition name="access-token-modal">
     <div class="modal is-active" transition="modal">
-      <div class="modal-background" @click="hide"></div>
+      <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">How to get a Personal Access Token</p>
@@ -29,11 +29,18 @@
 </template>
 
 <script>
+import { EventBus } from '../../event-bus'
+
 export default {
   name: 'HowToGetTokenModal',
+  data () {
+    return {
+      isShowing: false
+    }
+  },
   methods: {
     hide () {
-      this.$parent.$emit('token-modal-change', false)
+      EventBus.$emit('token-modal-change', false)
     }
   }
 }

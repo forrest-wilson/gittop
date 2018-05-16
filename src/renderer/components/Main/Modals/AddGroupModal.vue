@@ -2,7 +2,7 @@
   <transition name="add-group-modal">
     <!-- Add Group Modal Window -->
     <div class="modal is-active" transition="modal">
-      <div class="modal-background" @click="hideAddGroupModal"></div>
+      <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title"><i class="fa fa-folder"></i> Add a new group</p>
@@ -16,7 +16,7 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Add</button>
+          <button class="button is-success" @click="createNewGroup">Add</button>
           <button class="button" @click="hideAddGroupModal">Cancel</button>
         </footer>
       </div>
@@ -38,13 +38,12 @@ export default {
   mounted () {
     this.$refs.folderName.focus()
   },
-  created () {
-    this.$on('')
-  },
   methods: {
     hideAddGroupModal () {
       EventBus.$emit('add-group-modal-change', false)
-      this.groupName = ''
+    },
+    createNewGroup () {
+
     }
   }
 }

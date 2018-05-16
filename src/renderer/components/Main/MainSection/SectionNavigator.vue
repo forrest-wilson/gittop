@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { EventBus } from '../../event-bus'
+
 const settings = require('electron-settings')
 
 export default {
@@ -38,7 +40,7 @@ export default {
     },
     showSettingsModal () {
       // Sends an event to MainSection.vue
-      this.$parent.$emit('settings-modal-change', true)
+      EventBus.$emit('settings-modal-change', true)
     }
   }
 }

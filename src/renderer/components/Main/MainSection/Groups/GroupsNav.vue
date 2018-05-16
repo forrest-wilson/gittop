@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Group from './Group/Group.vue'
+import Group from './GroupsNav/Group.vue'
 
 import { EventBus } from '../../../event-bus'
 

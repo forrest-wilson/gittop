@@ -1,7 +1,7 @@
 <template>
   <transition name="settings-modal">
     <div class="modal is-active" transition="modal">
-      <div class="modal-background" @click="hideSettingsModal"></div>
+      <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title"><i class="fa fa-gear"></i> Settings</p>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { EventBus } from '../../event-bus'
+
 const settings = require('electron-settings')
 
 export default {
@@ -40,7 +42,7 @@ export default {
   },
   methods: {
     hideSettingsModal () {
-      this.$parent.$emit('settings-modal-change', false)
+      EventBus.$emit('settings-modal-change', false)
     },
     savePersonalAccessToken () {
       settings.set('personalAccessToken', this.personalAccessToken)
