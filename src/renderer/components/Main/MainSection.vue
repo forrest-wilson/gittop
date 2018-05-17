@@ -21,13 +21,11 @@ import AddGroupModal from './Modals/AddGroupModal.vue'
 
 import { EventBus } from '../event-bus'
 
-const settings = require('electron-settings')
-
 export default {
   name: 'MainSection',
   data () {
     return {
-      activeNavItem: settings.get('active-nav-item') || 'profile',
+      activeNavItem: this.$store.getters.activeNavItem || 'profile',
       isSettingsModalActive: false,
       isTokenModalActive: false,
       isAddGroupModalActive: false

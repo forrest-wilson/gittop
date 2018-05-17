@@ -15,28 +15,35 @@
 <script>
 import { EventBus } from '../../event-bus'
 
-const settings = require('electron-settings')
-
 export default {
   name: 'SectionNavigator',
   data () {
     return {
-      activeNavItem: settings.get('active-nav-item') || 'profile',
       avatarUrl: 'static/images/avatar@2x.png'
+    }
+  },
+  computed: {
+    activeNavItem: {
+      get () {
+        // Returns the vuex store activeNavItem if the property exists, otherwise return 'profile'
+        return this.$store.getters.activeNavItem || 'profile'
+      },
+      set (val) {
+        this.$store.commit('CHANGE_ACTIVE_NAV_ITEM', val)
+      }
     }
   },
   methods: {
     isActive (menuItem) {
+      // Returns a true/false value
       return this.activeNavItem === menuItem
     },
     setActive (menuItem) {
+      // This line invokes the set() method on activeNavItem
       this.activeNavItem = menuItem
 
       // Emits an event with the activeNavItem string
       this.$parent.$emit('main-section-change', this.activeNavItem)
-
-      // Sets the 'active-nav-item' property in electron-settings for persistance
-      settings.set('active-nav-item', this.activeNavItem)
     },
     showSettingsModal () {
       // Sends an event to MainSection.vue
