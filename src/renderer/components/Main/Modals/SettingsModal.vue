@@ -11,7 +11,7 @@
           <div class="field">
             <label class="label">Personal Access Token</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Your GitHub Personal Access Token" ref="token" v-model="nonPersistantPersonalAccessToken">
+              <input class="input" type="text" placeholder="Your GitHub Personal Access Token" ref="token" v-model="personalAccessToken">
             </div>
           </div>
         </section>
@@ -32,7 +32,7 @@ export default {
   props: ['isActive'],
   data () {
     return {
-      nonPersistantPersonalAccessToken: this.$store.getters.personalAccessToken
+      personalAccessToken: this.$store.getters.personalAccessToken
     }
   },
   mounted () {
@@ -43,7 +43,7 @@ export default {
       EventBus.$emit('settings-modal-change', false)
     },
     savePersonalAccessToken () {
-      this.$store.commit('CHANGE_PERSONAL_ACCESS_TOKEN', this.nonPersistantPersonalAccessToken)
+      this.$store.commit('CHANGE_PERSONAL_ACCESS_TOKEN', this.personalAccessToken)
       this.hideSettingsModal()
     }
   }
