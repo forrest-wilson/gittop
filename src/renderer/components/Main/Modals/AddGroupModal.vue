@@ -16,7 +16,7 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Add</button>
+          <button class="button is-success" @click="addGroup">Add</button>
           <button class="button" @click="hideAddGroupModal">Cancel</button>
         </footer>
       </div>
@@ -35,12 +35,21 @@ export default {
       groupName: ''
     }
   },
+  computed: {
+    groups () {
+      return this.$store.getters.groups
+    }
+  },
   mounted () {
     this.$refs.folderName.focus()
   },
   methods: {
     hideAddGroupModal () {
       EventBus.$emit('add-group-modal-change', false)
+    },
+    addGroup () {
+      this.$store.commit('ADD_GROUP', this.groupName)
+      this.hideAddGroupModal()
     }
   }
 }
