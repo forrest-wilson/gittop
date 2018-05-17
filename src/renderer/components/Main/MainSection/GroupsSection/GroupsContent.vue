@@ -28,7 +28,6 @@
 import Repo from './GroupsContent/Repo.vue'
 import { EventBus } from '../../../event-bus'
 
-const settings = require('electron-settings')
 const Store = require('electron-store')
 const eStore = new Store()
 const octokit = require('@octokit/rest')()
@@ -40,12 +39,12 @@ export default {
   },
   data () {
     return {
-      groups: settings.get('groups'),
+      groups: this.$store.getters.groups,
       repos: eStore.get('repos') || []
     }
   },
   mounted () {
-    let token = settings.get('personalAccessToken')
+    let token = this.$store.getters.personalAccessToken
 
     // Access token logic
     if (token) {
