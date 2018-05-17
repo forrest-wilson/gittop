@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       activeNavItem: settings.get('active-nav-item') || 'profile',
-      avatarUrl: 'static/images/avatar.png'
+      avatarUrl: 'static/images/avatar@2x.png'
     }
   },
   methods: {
