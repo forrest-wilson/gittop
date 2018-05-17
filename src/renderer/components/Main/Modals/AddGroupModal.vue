@@ -35,11 +35,6 @@ export default {
       groupName: ''
     }
   },
-  computed: {
-    groups () {
-      return this.$store.getters.groups
-    }
-  },
   mounted () {
     this.$refs.folderName.focus()
   },
