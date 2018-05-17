@@ -13,8 +13,8 @@
 
 <script>
 import SectionNavigator from './MainSection/SectionNavigator.vue'
-import Profile from './MainSection/Profile.vue'
-import Groups from './MainSection/Groups.vue'
+import ProfileSection from './MainSection/ProfileSection.vue'
+import GroupsSection from './MainSection/GroupsSection.vue'
 import SettingsModal from './Modals/SettingsModal.vue'
 import HowToGetTokenModal from './Modals/HowToGetTokenModal.vue'
 import AddGroupModal from './Modals/AddGroupModal.vue'
@@ -35,8 +35,8 @@ export default {
   },
   components: {
     'app-section-navigator': SectionNavigator,
-    'app-profile': Profile,
-    'app-groups': Groups,
+    'app-profile': ProfileSection,
+    'app-groups': GroupsSection,
     'app-settings': SettingsModal,
     'app-token-modal': HowToGetTokenModal,
     'app-add-group-modal': AddGroupModal
