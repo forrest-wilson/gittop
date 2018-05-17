@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import GroupsNav from './Groups/GroupsNav.vue'
-import GroupsContent from './Groups/GroupsContent.vue'
+import GroupsNav from './GroupsSection/GroupsNav.vue'
+import GroupsContent from './GroupsSection/GroupsContent.vue'
 
 export default {
   name: 'Groups',
