@@ -3,8 +3,8 @@ const state = {
 }
 
 const mutations = {
-  CHANGE_PERSONAL_ACCESS_TOKEN (state, payload) {
-    state.personalAccessToken = payload
+  CHANGE_PERSONAL_ACCESS_TOKEN (state, token) {
+    state.personalAccessToken = token
   }
 }
 
