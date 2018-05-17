@@ -11,7 +11,7 @@
           <div class="field">
             <label class="label">Personal Access Token</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Your GitHub Personal Access Token" ref="token" v-model="personalAccessToken">
+              <input class="input" type="text" placeholder="Your GitHub Personal Access Token" ref="token" v-model="nonPersistantPersonalAccessToken">
             </div>
           </div>
         </section>
@@ -27,14 +27,12 @@
 <script>
 import { EventBus } from '../../event-bus'
 
-const settings = require('electron-settings')
-
 export default {
   name: 'SettingsModal',
   props: ['isActive'],
   data () {
     return {
-      personalAccessToken: settings.get('personalAccessToken')
+      nonPersistantPersonalAccessToken: this.$store.getters.personalAccessToken
     }
   },
   mounted () {
@@ -45,7 +43,7 @@ export default {
       EventBus.$emit('settings-modal-change', false)
     },
     savePersonalAccessToken () {
-      settings.set('personalAccessToken', this.personalAccessToken)
+      this.$store.commit('CHANGE_PERSONAL_ACCESS_TOKEN', this.nonPersistantPersonalAccessToken)
       this.hideSettingsModal()
     }
   }
