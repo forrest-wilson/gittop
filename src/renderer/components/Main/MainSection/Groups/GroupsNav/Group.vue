@@ -1,5 +1,5 @@
 <template>
-  <div class="group selected" data-request="groupAll">
+  <div class="group" data-request="groupAll"> <!-- Active class is 'active' -->
     <slot name="groupName"></slot>
     <span class="icon is-small">
       <i class="fa fa-angle-right"></i>
