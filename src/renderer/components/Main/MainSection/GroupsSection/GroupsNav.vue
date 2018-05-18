@@ -7,9 +7,6 @@
       </div>
 
       <div class="groups">
-        <app-group>
-          <span class="group-title" slot="groupName">All Repos</span>
-        </app-group>
         <app-group v-for="group in groups" :key="group.id">
           <span class="group-title" slot="groupName">{{ group.name }}</span>
         </app-group>

@@ -1,7 +1,13 @@
 import uuid from 'uuid'
 
 const state = {
-  groups: []
+  groups: [
+    {
+      id: uuid.v4(),
+      name: 'All Repos',
+      children: []
+    }
+  ]
 }
 
 const mutations = {
