@@ -11,7 +11,7 @@ const mutations = {
 }
 
 const actions = {
-  async PAGINATE ({ commit }, { method, options }) {
+  async PAGINATE (e, { method, options }) {
     let res = await method(options)
     let { data } = res
 
@@ -22,7 +22,7 @@ const actions = {
 
     return data
   },
-  async REQUEST_REPOS ({ commit, dispatch }) {
+  REQUEST_REPOS ({ commit, dispatch }) {
     if (this.getters.personalAccessToken) {
       octokit.authenticate({
         type: 'token',
