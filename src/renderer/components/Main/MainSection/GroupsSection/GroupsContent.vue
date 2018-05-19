@@ -1,94 +1,41 @@
 <template>
   <div class="fit section group-content is-showing" style="position: relative;">
-    <div class="inner" style="position: absolute;" v-if="repos.length > 0">
-      <header class="content">
-        <h1><i class="fa fa-code"></i> All Repositories</h1>
-        <p>Below are your repositories</p>
-      </header>
-      <hr>
-      <main>
-        <app-repo v-for="repo in repos" :key="repo.id">
-          <template slot="name">{{ repo.name }}</template>
-          <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
-          <template slot="language">{{ repo.language }}</template>
-        </app-repo>
-      </main>
-    </div>
-
-    <div class="inner no-content" v-else>
-      <div class="content">
-        <h1 class="has-text-centered">Hey there!</h1>
-        <p class="has-text-centered">If you want to manage your GitHub repos, <a @click="showHowToGetTokenModal">get a personal access token</a> on GitHub and paste it into <a @click="showSettings">Settings</a>.</p>
-      </div>
-    </div>
+    <app-content></app-content>
   </div>
 </template>
 
 <script>
 import Repo from './GroupsContent/Repo.vue'
-import { EventBus } from '../../../event-bus'
-
-const Store = require('electron-store')
-const eStore = new Store()
-const octokit = require('@octokit/rest')()
+import Content from './GroupsContent/Content.vue'
 
 export default {
   name: 'GroupsContent',
   components: {
-    'app-repo': Repo
+    'app-repo': Repo,
+    'app-content': Content
   },
-  data () {
-    return {
-      groups: this.$store.getters.groups,
-      repos: eStore.get('repos') || []
-    }
-  },
-  mounted () {
-    let token = this.$store.getters.personalAccessToken
-
-    // Access token logic
-    if (token) {
-      octokit.authenticate({
-        type: 'token',
-        token: token
-      })
-
-      this.paginate(octokit.repos.getAll, {per_page: 100}).then(data => {
-        let storedRepos = eStore.get('repos')
-        console.log(data)
-
-        if (!storedRepos) {
-          eStore.set('repos', data)
-        } else {
-          eStore.get('repos')
-        }
-
-        this.repos = eStore.get('repos')
-      })
-    }
-  },
-  methods: {
-    async paginate (method, options) {
-      let res = await method(options)
-      let { data } = res
-
-      while (octokit.hasNextPage(res)) {
-        res = await octokit.getNextPage(res)
-        data = data.concat(res.data)
-      }
-
-      return data
+  computed: {
+    token () {
+      return this.$store.getters.personalAccessToken
     },
-    showSettings () {
-      EventBus.$emit('settings-modal-change', true)
+    groups () {
+      return this.$store.getters.groups
     },
-    showHowToGetTokenModal () {
-      EventBus.$emit('token-modal-change', true)
+    repos () {
+      return this.$store.getters.repos
     }
   },
   watch: {
-    repos () {
-      console.log('new repos have come in!')
+    token () {
+      this.getRepos()
+    }
+  },
+  mounted () {
+    this.getRepos()
+  },
+  methods: {
+    getRepos () {
+      this.$store.dispatch('REQUEST_REPOS')
     }
   }
 }
