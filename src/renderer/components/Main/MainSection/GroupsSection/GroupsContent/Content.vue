@@ -17,7 +17,6 @@
       <div class="content">
         <h1 class="has-text-centered">Hey there!</h1>
         <p class="has-text-centered">If you want to manage your GitHub repos, <a @click="showHowToGetTokenModal">get a personal access token</a> on GitHub and paste it into <a @click="showSettings">Settings</a>.</p>
-        <p>{{ number }}</p>
       </div>
     </div>
   </div>
@@ -28,16 +27,6 @@ import { EventBus } from '../../../../event-bus'
 
 export default {
   name: 'Content',
-  data () {
-    return {
-      number: 0
-    }
-  },
-  mounted () {
-    setInterval(() => {
-      this.number++
-    }, 100)
-  },
   methods: {
     showSettings () {
       EventBus.$emit('settings-modal-change', true)
