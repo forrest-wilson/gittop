@@ -1,5 +1,5 @@
 <template>
-  <div class="group" @click="setActive" :class="{ 'selected': activeGroup }">
+  <div class="group" @click="setActive" :class="{ 'selected': isActive }">
     <slot name="groupName"></slot>
     <span class="icon is-small">
       <i class="fa fa-angle-right"></i>
@@ -12,7 +12,7 @@ export default {
   name: 'Group',
   props: ['groupInfo'],
   computed: {
-    activeGroup () {
+    isActive () {
       return this.$store.getters.activeGroup === this.groupInfo.id
     }
   },
