@@ -31,6 +31,7 @@ const actions = {
 
       dispatch('PAGINATE', { method: octokit.repos.getAll, options: { per_page: 100 } }).then(repos => {
         commit('ADD_REPOS', repos)
+        commit('ADD_CHILDREN', { idx: 0, repos })
       }, err => {
         // Unhandled error. Currently fails silently
         throw new Error(JSON.parse(err).message)
