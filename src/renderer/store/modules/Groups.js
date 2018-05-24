@@ -1,4 +1,5 @@
 import uuid from 'uuid'
+import _ from 'lodash'
 
 const state = {
   groups: [
@@ -19,6 +20,17 @@ const mutations = {
     }
 
     state.groups.push(group)
+  },
+  ADD_CHILDREN (state, { idx, repos }) {
+    let repoIds = []
+
+    if (!Array.isArray(repos)) repos = [repos]
+
+    repos.forEach(repo => {
+      repoIds.push(repo.id)
+    })
+
+    state.groups[idx].children = _.uniq(_.concat(state.groups[idx].children, repoIds))
   }
 }
 
