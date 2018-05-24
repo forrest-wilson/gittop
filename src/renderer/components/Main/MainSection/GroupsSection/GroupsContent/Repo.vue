@@ -27,10 +27,8 @@
 <script>
 export default {
   name: 'Repo',
-  props: ['repo'],
   data () {
     return {
-      repoInfo: this.repo,
       isDropdownShowing: false
     }
   }
