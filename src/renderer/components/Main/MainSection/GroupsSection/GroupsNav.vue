@@ -7,7 +7,7 @@
       </div>
 
       <div class="groups">
-        <app-group v-for="group in groups" :key="group.id">
+        <app-group v-for="group in groups" :key="group.id" :groupInfo="group">
           <span class="group-title" slot="groupName">{{ group.name }}</span>
         </app-group>
       </div>
@@ -28,6 +28,14 @@ export default {
   name: 'GroupsNav',
   components: {
     'app-group': Group
+  },
+  data () {
+    return {
+      activeGroup: null
+    }
+  },
+  mounted () {
+    this.activeGroup = this.$store.getters.groups[0].id
   },
   computed: {
     groups () {
