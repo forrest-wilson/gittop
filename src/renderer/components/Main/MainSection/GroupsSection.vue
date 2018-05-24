@@ -27,7 +27,7 @@ import GroupsNav from './GroupsSection/GroupsNav.vue'
 import GroupsContent from './GroupsSection/GroupsContent.vue'
 
 export default {
-  name: 'Groups',
+  name: 'GroupsSection',
   props: ['activeNavItem'],
   components: {
     'app-groups-nav': GroupsNav,
