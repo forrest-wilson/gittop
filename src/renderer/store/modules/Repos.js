@@ -1,12 +1,16 @@
 const octokit = require('@octokit/rest')()
 
 const state = {
-  repos: []
+  repos: [],
+  activeRepos: []
 }
 
 const mutations = {
   ADD_REPOS (state, repos) {
     state.repos = repos
+  },
+  ACTIVATE_REPOS (state, repos) {
+    state.activeRepos = repos
   }
 }
 
@@ -41,7 +45,8 @@ const actions = {
 }
 
 const getters = {
-  repos: state => state.repos
+  repos: state => state.repos,
+  activeRepos: state => state.activeRepos
 }
 
 export default {

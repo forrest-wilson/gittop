@@ -9,11 +9,11 @@
       <hr>
 
       <main>
-        <!-- <app-repo v-for="repo in repos" :key="repo.id">
+        <app-repo v-for="repo in activeRepos" :key="repo.id">
           <template slot="name">{{ repo.name }}</template>
           <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
           <template slot="language">{{ repo.language }}</template>
-        </app-repo> -->
+        </app-repo>
       </main>
 
       <div class="inner no-content" v-if="!token">
@@ -45,6 +45,9 @@ export default {
     },
     repos () {
       return this.$store.getters.repos
+    },
+    activeRepos () {
+      return this.$store.getters.activeRepos
     }
   },
   watch: {
