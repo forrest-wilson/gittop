@@ -29,13 +29,10 @@ export default {
   components: {
     'app-group': Group
   },
-  data () {
-    return {
-      activeGroup: null
-    }
-  },
   mounted () {
-    this.activeGroup = this.$store.getters.groups[0].id
+    if (this.$store.getters.activeGroup === 'undefined') {
+      this.$store.commit('CHANGE_ACTIVE_GROUP', this.groups[0].id)
+    }
   },
   computed: {
     groups () {

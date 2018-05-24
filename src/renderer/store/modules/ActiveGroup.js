@@ -1,5 +1,5 @@
 const state = {
-  activeGroup: null
+  activeGroup: undefined
 }
 
 const mutations = {
