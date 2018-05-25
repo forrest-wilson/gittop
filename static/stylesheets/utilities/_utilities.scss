@@ -16,7 +16,6 @@
     transition: 150ms ease-in-out;
     visibility: hidden;
     opacity: 0;
-    display: flex;
 
     &.is-showing {
         transform: translateX(0px);
