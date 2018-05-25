@@ -1,9 +1,11 @@
 .repo {
     position: relative;
-    padding: 15px;
+    padding: 25px 15px;
     display: flex;
     -webkit-user-drag: element;
     user-select: none;
+    border-radius: $borderRadius;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 }
 
 .repo-name {

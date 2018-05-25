@@ -1,15 +1,8 @@
 <template>
   <div class="fit section group-content is-showing" style="position: relative;">
-    <app-utilities-bar></app-utilities-bar>
     <div class="inner" style="position: absolute;">
-      <header class="content">
-        <h1><i class="fa fa-code"></i> All Repositories</h1>
-        <p>Below are your repositories</p>
-      </header>
-      
-      <hr>
-
       <main v-if="token">
+        <app-utilities-bar></app-utilities-bar>
         <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
           <template slot="name">{{ repo.name }}</template>
           <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
