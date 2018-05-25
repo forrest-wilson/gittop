@@ -5,7 +5,7 @@
       <span><slot name="language"></slot></span>
     </div>
     <div class="actions">
-      <button class="button is-success clone-button">Clone Repo</button>
+      <button class="button is-success clone-button" @click="clone">Clone Repo</button>
       <div class="options-dropdown dropdown is-right" style="margin-left: 15px" :class="{ 'is-active': isDropdownShowing }">
         <div class="dropdown-trigger" style="display: flex; align-items: center;">
           <button class="button" @click="isDropdownShowing = !isDropdownShowing">
@@ -25,9 +25,12 @@
 </template>
 
 <script>
+import { remote } from 'electron'
+import gitClone from 'git-clone'
+
 export default {
   name: 'Repo',
-  props: ['searchTerm', 'name'],
+  props: ['searchTerm', 'name', 'gitUrl'],
   data () {
     return {
       isDropdownShowing: false
@@ -36,6 +39,11 @@ export default {
   methods: {
     isSearched () {
       return this.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    },
+    clone () {
+      let path = remote.dialog.showSaveDialog({buttonLabel: 'Clone', defaultPath: this.name})
+
+      if (path) gitClone(this.gitUrl, path)
     }
   }
 }

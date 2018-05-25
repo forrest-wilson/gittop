@@ -3,7 +3,7 @@
     <div class="inner" style="position: absolute;">
       <main v-if="token">
         <app-utilities-bar></app-utilities-bar>
-        <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
+        <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name" :gitUrl="repo.git_url">
           <template slot="name">{{ repo.name }}</template>
           <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
           <template slot="language">{{ repo.language }}</template>
