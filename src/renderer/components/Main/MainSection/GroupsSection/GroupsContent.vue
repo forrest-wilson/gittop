@@ -1,5 +1,6 @@
 <template>
   <div class="fit section group-content is-showing" style="position: relative;">
+    <app-utilities-bar></app-utilities-bar>
     <div class="inner" style="position: absolute;">
       <header class="content">
         <h1><i class="fa fa-code"></i> All Repositories</h1>
@@ -8,8 +9,8 @@
       
       <hr>
 
-      <main>
-        <app-repo v-for="repo in activeRepos" :key="repo.id">
+      <main v-if="token">
+        <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
           <template slot="name">{{ repo.name }}</template>
           <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
           <template slot="language">{{ repo.language }}</template>
@@ -28,13 +29,20 @@
 
 <script>
 import Repo from './GroupsContent/Repo.vue'
+import UtilitiesBar from './GroupsContent/UtilitiesBar.vue'
 
 import { EventBus } from '../../../event-bus'
 
 export default {
   name: 'GroupsContent',
   components: {
-    'app-repo': Repo
+    'app-repo': Repo,
+    'app-utilities-bar': UtilitiesBar
+  },
+  data () {
+    return {
+      searchTerm: ''
+    }
   },
   computed: {
     token () {
@@ -57,6 +65,9 @@ export default {
   },
   mounted () {
     this.getRepos()
+    this.$on('search-term-updated', searchTerm => {
+      this.searchTerm = searchTerm
+    })
   },
   methods: {
     getRepos () {
