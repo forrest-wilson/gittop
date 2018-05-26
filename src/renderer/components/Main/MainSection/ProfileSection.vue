@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'Profile',
+  name: 'ProfileSection',
   props: ['activeNavItem'],
   methods: {
     isActive (item) {
