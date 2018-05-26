@@ -28,6 +28,8 @@
 import { remote } from 'electron'
 import gitClone from 'git-clone'
 
+const { dialog, Notification, shell } = remote
+
 export default {
   name: 'Repo',
   props: ['searchTerm', 'name', 'gitUrl'],
@@ -41,22 +43,22 @@ export default {
       return this.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     },
     clone () {
-      let path = remote.dialog.showSaveDialog(remote.getCurrentWindow(), {buttonLabel: 'Clone', defaultPath: this.name})
+      let path = dialog.showSaveDialog(remote.getCurrentWindow(), {buttonLabel: 'Clone', defaultPath: this.name})
 
       if (path) {
         gitClone(this.gitUrl, path, () => {
-          const notifySuccess = new remote.Notification({
+          const notifySuccess = new Notification({
             title: 'Successfully cloned:',
             body: `${this.name}`,
             silent: true
           })
 
-          if (remote.Notification.isSupported()) {
+          if (Notification.isSupported()) {
             notifySuccess.show()
 
             notifySuccess.once('click', () => {
               // Opens the newly created repo in finder/explorer
-              remote.shell.openItem(`${path}`)
+              shell.openItem(`${path}`)
             })
           }
         })
