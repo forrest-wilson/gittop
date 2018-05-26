@@ -1,19 +1,21 @@
 <template>
   <div class="app-column fit group-content is-showing">
-    <div class="inner">
-      <main v-if="token">
-        <app-utilities-bar></app-utilities-bar>
-        <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
-          <template slot="name">{{ repo.name }}</template>
-          <template slot="visibility" v-if="repo.private"><small class="repo-attribute">PRIVATE</small></template>
-          <template slot="language">{{ repo.language }}</template>
-        </app-repo>
-      </main>
+    <app-utilities-bar></app-utilities-bar>
+    <div style="overflow-y: auto;">
+      <div class="inner">
+        <main v-if="token">
+          <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
+            <template slot="name">{{ repo.name }}</template>
+            <template slot="visibility" v-if="repo.private"><small class="repo-attribute">PRIVATE</small></template>
+            <template slot="language">{{ repo.language }}</template>
+          </app-repo>
+        </main>
 
-      <div class="inner no-content" v-if="!token">
-        <div class="content">
-          <h1 class="has-text-centered">Hey there!</h1>
-          <p class="has-text-centered">If you want to manage your GitHub repos, <a @click="showHowToGetTokenModal">get a personal access token</a> on GitHub and paste it into <a @click="showSettings">Settings</a>.</p>
+        <div class="inner no-content" v-if="!token">
+          <div class="content">
+            <h1 class="has-text-centered">Hey there!</h1>
+            <p class="has-text-centered">If you want to manage your GitHub repos, <a @click="showHowToGetTokenModal">get a personal access token</a> on GitHub and paste it into <a @click="showSettings">Settings</a>.</p>
+          </div>
         </div>
       </div>
     </div>
