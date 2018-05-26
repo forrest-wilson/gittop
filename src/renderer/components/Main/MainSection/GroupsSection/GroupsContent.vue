@@ -5,7 +5,7 @@
         <app-utilities-bar></app-utilities-bar>
         <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
           <template slot="name">{{ repo.name }}</template>
-          <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
+          <template slot="visibility" v-if="repo.private"><small class="repo-attribute">PRIVATE</small></template>
           <template slot="language">{{ repo.language }}</template>
         </app-repo>
       </main>

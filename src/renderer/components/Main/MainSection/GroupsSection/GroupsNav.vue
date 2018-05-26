@@ -1,6 +1,6 @@
 <template>
   <nav class="app-column static nav-bg">
-    <section class="repo-section">
+    <section class="groups-section">
       <!-- Section Label -->
       <div class="section-label">
         <label>Groups</label>
@@ -12,7 +12,7 @@
         </app-group>
       </div>
 
-      <div class="app-nav-item no-shrink bottom" @click="showAddGroupModalModal">
+      <div class="app-nav-item bottom" @click="showAddGroupModalModal">
         <span class="nav-title has-text-centered">+</span>
       </div>
     </section>
