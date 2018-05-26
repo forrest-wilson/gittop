@@ -1,6 +1,5 @@
 <template>
   <div class="app-column fit group-content is-showing">
-<<<<<<< HEAD
     <app-utilities-bar></app-utilities-bar>
     <div style="overflow-y: auto;">
       <div class="inner">
@@ -11,17 +10,6 @@
             <template slot="language">{{ repo.language }}</template>
           </app-repo>
         </main>
-=======
-    <div class="inner">
-      <main v-if="token">
-        <app-utilities-bar></app-utilities-bar>
-        <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name" :gitUrl="repo.git_url">
-          <template slot="name">{{ repo.name }}</template>
-          <template slot="visibility" v-if="repo.private"><small class="repo-attribute">PRIVATE</small></template>
-          <template slot="language">{{ repo.language }}</template>
-        </app-repo>
-      </main>
->>>>>>> clone-repo-implementation
 
         <div class="inner no-content" v-if="!token">
           <div class="content">
