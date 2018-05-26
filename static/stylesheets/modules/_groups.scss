@@ -1,3 +1,40 @@
+.groups {
+    overflow-y: auto;
+    flex-grow: 1;
+
+    .group {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        user-select: none;
+
+        .group-title {
+            flex: 1;
+            align-self: center;
+            word-break: break-word;
+        }
+
+        &.selected,
+        &:hover {
+            background-color: $selectedDarkColor;
+            cursor: pointer;
+        }
+    }
+}
+
+.group-option {
+    color: white;
+    padding: 10px;
+    border-radius: 2.5px;
+    margin-bottom: 5px;
+
+    &:hover,
+    &.selected-group-option {
+        background-color: rgb(120, 120, 120);
+        cursor: pointer;
+    }
+}
+
 .no-content {
     display: flex;
     align-items: center;
