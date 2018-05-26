@@ -43,7 +43,24 @@ export default {
     clone () {
       let path = remote.dialog.showSaveDialog(remote.getCurrentWindow(), {buttonLabel: 'Clone', defaultPath: this.name})
 
-      if (path) gitClone(this.gitUrl, path)
+      if (path) {
+        gitClone(this.gitUrl, path, () => {
+          const notifySuccess = new remote.Notification({
+            title: 'Successfully cloned:',
+            body: `${this.name}`,
+            silent: true
+          })
+
+          if (remote.Notification.isSupported()) {
+            notifySuccess.show()
+
+            notifySuccess.once('click', () => {
+              // Opens the newly created repo in finder/explorer
+              remote.shell.openItem(`${path}`)
+            })
+          }
+        })
+      }
     }
   }
 }
