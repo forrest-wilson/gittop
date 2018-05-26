@@ -51,16 +51,16 @@ export default {
 </script>
 
 <style scoped>
-    .add-group-modal-enter {
-      opacity: 0;
-    }
+  .add-group-modal-enter {
+    opacity: 0;
+  }
 
-    .add-group-modal-leave-active {
-      opacity: 0;
-    }
+  .add-group-modal-leave-active {
+    opacity: 0;
+  }
 
-    .add-group-modal-enter .modal-card,
-    .add-group-modal-leave-active .modal-card {
-      transform: scale(1.05);
-    }
+  .add-group-modal-enter .modal-card,
+  .add-group-modal-leave-active .modal-card {
+    transform: scale(1.05);
+  }
 </style>

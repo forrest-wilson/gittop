@@ -1,9 +1,9 @@
 <template>
   <nav class="app-column section-navigator window-drag">
-    <div class="navigator-icon" @click="setActive('profile')" :class="{ 'active-nav-item': isActive('profile') }">
+    <div class="navigator-icon" @click="setActive('profile')" :class="{ 'active-icon': isActive('profile') }">
       <img class="profile-image" :src="avatarUrl" alt="Avatar">
     </div>
-    <div class="navigator-icon" @click="setActive('repos')" :class="{ 'active-nav-item': isActive('repos') }">
+    <div class="navigator-icon" @click="setActive('repos')" :class="{ 'active-icon': isActive('repos') }">
       <i class="fa fa-code"></i>
     </div>
     <div class="navigator-icon bottom" @click="showSettingsModal">

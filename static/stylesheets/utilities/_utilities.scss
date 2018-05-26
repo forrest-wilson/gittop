@@ -1,35 +1,5 @@
-//**** Utilities ****//
-
 .inner {
     padding: 1rem;
-}
-
-.section {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    transform: translateX(-5px);
-    transition: 150ms ease-in-out;
-    visibility: hidden;
-    opacity: 0;
-
-    &.is-showing {
-        transform: translateX(0px);
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .inner {
-        width: 100%;
-    }
-}
-
-.nav-section {
-    display: flex;
 }
 
 .window-drag {
@@ -38,4 +8,11 @@
 
 .window-no-drag {
     -webkit-app-region: no-drag;
+}
+
+.nav-bg {
+    background: $darkColor;
+    & > * {
+        color: white;
+    }
 }

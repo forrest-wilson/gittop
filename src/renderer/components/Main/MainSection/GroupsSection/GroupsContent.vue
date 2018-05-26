@@ -1,11 +1,11 @@
 <template>
-  <div class="fit section group-content is-showing" style="position: relative;">
-    <div class="inner" style="position: absolute;">
+  <div class="app-column fit group-content is-showing">
+    <div class="inner">
       <main v-if="token">
         <app-utilities-bar></app-utilities-bar>
         <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name" :gitUrl="repo.git_url">
           <template slot="name">{{ repo.name }}</template>
-          <template slot="visibility" v-if="repo.private"><small class="repo-attr">PRIVATE</small></template>
+          <template slot="visibility" v-if="repo.private"><small class="repo-attribute">PRIVATE</small></template>
           <template slot="language">{{ repo.language }}</template>
         </app-repo>
       </main>

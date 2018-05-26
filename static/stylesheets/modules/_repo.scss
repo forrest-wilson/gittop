@@ -1,5 +1,4 @@
 .repo {
-    position: relative;
     padding: 25px 15px;
     display: flex;
     -webkit-user-drag: element;
@@ -8,27 +7,27 @@
     box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 }
 
+.details {
+    flex-grow: 1;
+    align-self: center;
+}
+
+.actions,
 .repo-name {
     display: flex;
+}
+
+.repo-name {
     align-items: center;
 }
 
-.repo-attr {
+.repo-attribute {
     font-weight: normal;
     font-size: 10px;
     margin-left: 5px;
     padding: 5px;
     border: 1px solid lightgray;
     border-radius: 5px;
-}
-
-.actions {
-    display: flex;
-}
-
-.details {
-    flex-grow: 1;
-    align-self: center;
 }
 
 .clone-button {

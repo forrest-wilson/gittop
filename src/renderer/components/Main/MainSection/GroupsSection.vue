@@ -1,5 +1,5 @@
 <template>
-  <section class="nav-section section" :class="{ 'is-showing': isActive('repos') }">
+  <section class="app-section" :class="{ 'is-showing': isActive('repos') }">
     <!-- Add Repo to Group Modal Window -->
     <div id="addRepoToGroupModal" class="modal">
       <div class="modal-background"></div>
