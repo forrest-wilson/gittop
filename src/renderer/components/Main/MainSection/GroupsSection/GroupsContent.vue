@@ -1,6 +1,6 @@
 <template>
-  <div class="fit app-section group-content is-showing" style="position: relative;">
-    <div class="inner" style="position: absolute;">
+  <div class="app-column fit group-content is-showing">
+    <div class="inner">
       <main v-if="token">
         <app-utilities-bar></app-utilities-bar>
         <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
