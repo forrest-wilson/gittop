@@ -1,5 +1,5 @@
 <template>
-  <div class="fit section group-content is-showing" style="position: relative;">
+  <div class="fit app-section group-content is-showing" style="position: relative;">
     <div class="inner" style="position: absolute;">
       <main v-if="token">
         <app-utilities-bar></app-utilities-bar>
