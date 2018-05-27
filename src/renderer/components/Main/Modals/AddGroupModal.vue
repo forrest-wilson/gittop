@@ -1,7 +1,7 @@
 <template>
   <transition name="add-group-modal">
     <!-- Add Group Modal Window -->
-    <div class="modal is-active">
+    <div class="modal is-active" @keyup.enter="addGroup">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">

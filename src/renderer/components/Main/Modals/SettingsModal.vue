@@ -1,6 +1,6 @@
 <template>
   <transition name="settings-modal">
-    <div class="modal is-active">
+    <div class="modal is-active" @keyup.enter="savePersonalAccessToken">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
