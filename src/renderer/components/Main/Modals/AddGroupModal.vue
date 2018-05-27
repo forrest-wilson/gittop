@@ -43,7 +43,10 @@ export default {
       EventBus.$emit('add-group-modal-change', false)
     },
     addGroup () {
-      this.$store.commit('ADD_GROUP', this.groupName)
+      if (this.groupName) {
+        this.$store.commit('ADD_GROUP', this.groupName)
+      }
+
       this.hideAddGroupModal()
     }
   }
