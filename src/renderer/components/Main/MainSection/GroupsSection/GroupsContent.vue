@@ -10,11 +10,10 @@
         </app-repo>
       </main>
 
-        <div class="inner no-content" v-if="!token">
-          <div class="content">
-            <h1 class="has-text-centered">Hey there!</h1>
-            <p class="has-text-centered">If you want to manage your GitHub repos, <a @click="showHowToGetTokenModal">get a personal access token</a> on GitHub and paste it into <a @click="showSettings">Settings</a>.</p>
-          </div>
+      <div class="inner no-content" v-if="!token">
+        <div class="content">
+          <h1 class="has-text-centered">Hey there!</h1>
+          <p class="has-text-centered">If you want to manage your GitHub repos, <a @click="showHowToGetTokenModal">get a personal access token</a> on GitHub and paste it into <a @click="showSettings">Settings</a>.</p>
         </div>
       </div>
     </div>
