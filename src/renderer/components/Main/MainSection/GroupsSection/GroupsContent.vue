@@ -1,15 +1,14 @@
 <template>
   <div class="app-column fit group-content is-showing">
-    <app-utilities-bar></app-utilities-bar>
-    <div style="overflow-y: auto;">
-      <div class="inner">
-        <main v-if="token">
-          <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :name="repo.name">
-            <template slot="name">{{ repo.name }}</template>
-            <template slot="visibility" v-if="repo.private"><small class="repo-attribute">PRIVATE</small></template>
-            <template slot="language">{{ repo.language }}</template>
-          </app-repo>
-        </main>
+    <div class="inner">
+      <main v-if="token">
+        <app-utilities-bar></app-utilities-bar>
+        <app-repo v-for="repo in activeRepos" :key="repo.id" :searchTerm="searchTerm" :repo="repo">
+          <template slot="name">{{ repo.name }}</template>
+          <template slot="visibility" v-if="repo.private"><small class="repo-attribute">PRIVATE</small></template>
+          <template slot="language">{{ repo.language }}</template>
+        </app-repo>
+      </main>
 
         <div class="inner no-content" v-if="!token">
           <div class="content">
