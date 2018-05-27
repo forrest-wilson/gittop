@@ -32,7 +32,7 @@ const { dialog, Notification, shell } = remote
 
 export default {
   name: 'Repo',
-  props: ['searchTerm', 'name', 'gitUrl'],
+  props: ['searchTerm', 'repo'],
   data () {
     return {
       isDropdownShowing: false
@@ -40,16 +40,16 @@ export default {
   },
   methods: {
     isSearched () {
-      return this.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      return this.repo.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     },
     clone () {
-      let path = dialog.showSaveDialog(remote.getCurrentWindow(), {buttonLabel: 'Clone', defaultPath: this.name})
+      let path = dialog.showSaveDialog(remote.getCurrentWindow(), {buttonLabel: 'Clone', defaultPath: this.repo.name})
 
       if (path) {
-        gitClone(this.gitUrl, path, () => {
+        gitClone(this.repo.clone_url, path, () => {
           const notifySuccess = new Notification({
             title: 'Successfully cloned:',
-            body: `${this.name}`,
+            body: this.repo.name,
             silent: true
           })
 
@@ -58,7 +58,7 @@ export default {
 
             notifySuccess.once('click', () => {
               // Opens the newly created repo in finder/explorer
-              shell.openItem(`${path}`)
+              shell.openItem(path)
             })
           }
         })
