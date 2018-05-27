@@ -16,7 +16,8 @@
         </div>
         <div class="dropdown-menu">
           <div class="dropdown-content">
-            <a class="dropdown-item open-add-repo-to-group-modal">Add Repo to Group</a>
+            <a class="dropdown-item">Add Repo to Group</a>
+            <a class="dropdown-item" @click="openLink">Open in Browser</a>
           </div>
         </div>
       </div>
@@ -42,6 +43,9 @@ export default {
     isSearched () {
       return this.repo.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     },
+    closeDropdown () {
+      this.isDropdownShowing = false
+    },
     clone () {
       let path = dialog.showSaveDialog(remote.getCurrentWindow(), {buttonLabel: 'Clone', defaultPath: this.repo.name})
 
@@ -63,6 +67,10 @@ export default {
           }
         })
       }
+    },
+    openLink () {
+      shell.openExternal(this.repo.html_url)
+      this.closeDropdown()
     }
   }
 }
