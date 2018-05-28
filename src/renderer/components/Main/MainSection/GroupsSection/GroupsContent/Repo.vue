@@ -1,5 +1,5 @@
 <template>
-  <div class="repo content" v-if="isSearched()">
+  <div class="repo content">
     <div class="details">
       <h2 class="repo-name"><slot name="name"></slot><slot name="visibility"></slot></h2>
       <span><slot name="language"></slot></span>
@@ -40,9 +40,6 @@ export default {
     }
   },
   methods: {
-    isSearched () {
-      return this.repo.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    },
     closeDropdown () {
       this.isDropdownShowing = false
     },
