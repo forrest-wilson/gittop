@@ -14,6 +14,15 @@
               <input class="input" type="text" placeholder="Your GitHub Personal Access Token" ref="token" v-model="personalAccessToken">
             </div>
           </div>
+          <div class="field">
+            <label class="label">Global Settings</label>
+            <div class="switch-control">
+              <span class="switch">
+                <span class="slider"></span>
+              </span>
+              <label>Enable Sounds</label>
+            </div>
+          </div>
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success" @click="savePersonalAccessToken">Save</button>

@@ -1,0 +1,40 @@
+$spacing: 4px;
+
+.switch-control {
+    display: flex;
+    align-items: center;
+}
+
+// Toggle the 'on' class to put the switch in its enabled state
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    background-color: #CCC;
+    border-radius: 34px;
+    margin-right: 10px;
+
+    &.on {
+        background-color: #23d160;
+
+        .slider {
+            transform: translateX(26px);
+        }
+    }
+}
+
+.slider {
+    position: absolute;
+    top: $spacing;
+    left: $spacing;
+    bottom: $spacing;
+    width: 26px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.switch, .slider {
+    transition: 300ms;
+    cursor: pointer;
+}
