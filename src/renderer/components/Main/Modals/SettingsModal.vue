@@ -17,10 +17,10 @@
           <div class="field">
             <label class="label">Global Settings</label>
             <div class="switch-control">
-              <span class="switch">
+              <span class="switch" :class="{ on: inAppSounds }" @click="$store.commit('SET_IN_APP_SOUNDS', !inAppSounds)">
                 <span class="slider"></span>
               </span>
-              <label>Enable Sounds</label>
+              <label>In App Sounds</label>
             </div>
           </div>
         </section>
@@ -42,6 +42,11 @@ export default {
   data () {
     return {
       personalAccessToken: this.$store.getters.personalAccessToken
+    }
+  },
+  computed: {
+    inAppSounds () {
+      return this.$store.getters.inAppSounds
     }
   },
   mounted () {
