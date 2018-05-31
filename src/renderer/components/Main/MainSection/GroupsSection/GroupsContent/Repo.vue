@@ -39,6 +39,11 @@ export default {
       isDropdownShowing: false
     }
   },
+  computed: {
+    inAppSounds () {
+      return this.$store.getters.inAppSounds
+    }
+  },
   methods: {
     closeDropdown () {
       this.isDropdownShowing = false
@@ -51,7 +56,7 @@ export default {
           const notifySuccess = new Notification({
             title: 'Successfully cloned:',
             body: this.repo.name,
-            silent: true
+            silent: !this.inAppSounds
           })
 
           if (Notification.isSupported()) {
