@@ -27,7 +27,7 @@ import { EventBus } from '../../event-bus'
 
 export default {
   name: 'AddRepoToGroupModal',
-  props: ['id'],
+  props: ['repo'],
   data () {
     return {
       selectedGroup: ''
@@ -40,13 +40,20 @@ export default {
   },
   methods: {
     closeModal () {
-      EventBus.$emit('add-repo-to-group-modal-change', false)
+      EventBus.$emit('add-repo-to-group-modal-change', {state: false, repo: null})
     },
     isSelected (id) {
       return this.selectedGroup === id
     },
     addRepoToGroup () {
-      console.log(this.id)
+      for (let i = 0; i < this.groups.length; i++) {
+        if (this.groups[i].id === this.selectedGroup) {
+          this.$store.commit('ADD_CHILDREN', {idx: i, repos: this.repo})
+          break
+        }
+      }
+
+      this.closeModal()
     }
   }
 }

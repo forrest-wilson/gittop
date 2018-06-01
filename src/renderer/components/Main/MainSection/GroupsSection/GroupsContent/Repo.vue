@@ -77,7 +77,7 @@ export default {
       this.closeDropdown()
     },
     openAddRepoToGroupModal () {
-      EventBus.$emit('add-repo-to-group-modal-change', {state: true, id: this.repo.id})
+      EventBus.$emit('add-repo-to-group-modal-change', {state: true, repo: this.repo})
       this.closeDropdown()
     }
   }
