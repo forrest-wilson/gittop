@@ -8,10 +8,13 @@
           <button class="delete" aria-label="close" @click="closeModal"></button>
         </header>
         <section class="modal-card-body">
-
+          <!-- Conditionally render all groups except for the first one as this contains all repos anyway -->
+          <div class="group content" v-for="(group, idx) in groups" :key="group.id" v-if="idx !== 0" @click="selectedGroup = group.id" :class="{ selected: isSelected(group.id) }">
+            <p>{{ group.name }}</p>
+          </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Add</button>
+          <button class="button is-success" @click="addRepoToGroup">Add</button>
           <button class="button" @click="closeModal">Cancel</button>
         </footer>
       </div>
@@ -24,6 +27,12 @@ import { EventBus } from '../../event-bus'
 
 export default {
   name: 'AddRepoToGroupModal',
+  props: ['id'],
+  data () {
+    return {
+      selectedGroup: ''
+    }
+  },
   computed: {
     groups () {
       return this.$store.getters.groups
@@ -32,12 +41,18 @@ export default {
   methods: {
     closeModal () {
       EventBus.$emit('add-repo-to-group-modal-change', false)
+    },
+    isSelected (id) {
+      return this.selectedGroup === id
+    },
+    addRepoToGroup () {
+      console.log(this.id)
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
   .add-repos-to-group-modal-enter {
     opacity: 0;
   }
@@ -49,5 +64,23 @@ export default {
   .add-repos-to-group-modal-enter .modal-card,
   .add-repos-to-group-modal-leave-active .modal-card {
     transform: scale(1.05);
+  }
+
+  .group {
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .group:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  .group:hover {
+    background-color: grey;
+  }
+
+  .group.selected {
+    background-color: gray;
   }
 </style>

@@ -7,7 +7,7 @@
         <app-settings v-if="isSettingsModalActive"></app-settings>
         <app-token-modal v-if="isTokenModalActive"></app-token-modal>
         <app-add-group-modal v-if="isAddGroupModalActive"></app-add-group-modal>
-        <app-add-repo-to-group-modal v-if="isAddRepoToGroupModalActive"></app-add-repo-to-group-modal>
+        <app-add-repo-to-group-modal v-if="isAddRepoToGroupModalActive" :id="repoToAddToGroup"></app-add-repo-to-group-modal>
       </main>
   </div>
 </template>
@@ -31,7 +31,8 @@ export default {
       isSettingsModalActive: false,
       isTokenModalActive: false,
       isAddGroupModalActive: false,
-      isAddRepoToGroupModalActive: false
+      isAddRepoToGroupModalActive: false,
+      repoIdToAddToGroup: null
     }
   },
   components: {
@@ -60,8 +61,9 @@ export default {
       this.isAddGroupModalActive = state
     })
 
-    EventBus.$on('add-repo-to-group-modal-change', state => {
-      this.isAddRepoToGroupModalActive = state
+    EventBus.$on('add-repo-to-group-modal-change', args => {
+      this.isAddRepoToGroupModalActive = args.state
+      this.repoToAddToGroup = args.id
     })
   }
 }
