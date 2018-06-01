@@ -16,7 +16,7 @@
         </div>
         <div class="dropdown-menu">
           <div class="dropdown-content">
-            <a class="dropdown-item">Add Repo to Group</a>
+            <a class="dropdown-item" @click="openAddRepoToGroupModal">Add Repo to Group</a>
             <a class="dropdown-item" @click="openLink">Open in Browser</a>
           </div>
         </div>
@@ -28,6 +28,8 @@
 <script>
 import { remote } from 'electron'
 import gitClone from 'git-clone'
+
+import { EventBus } from '../../../../event-bus'
 
 const { dialog, Notification, shell } = remote
 
@@ -72,6 +74,10 @@ export default {
     },
     openLink () {
       shell.openExternal(this.repo.html_url)
+      this.closeDropdown()
+    },
+    openAddRepoToGroupModal () {
+      EventBus.$emit('add-repo-to-group-modal-change', true)
       this.closeDropdown()
     }
   }
