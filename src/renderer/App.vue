@@ -11,5 +11,5 @@
 </script>
 
 <style lang="scss">
-  // Needed for stylesheet compilation
+  // Needed for SCSS stylesheet compilation
 </style>
